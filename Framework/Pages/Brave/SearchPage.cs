@@ -4,26 +4,33 @@ namespace Framework.Pages.Brave
 {
     public class SearchPage : PageBase
     {
-        public SearchPage(IWebDriver driver) : base(driver) { }
+        private Common common;
+
+        public SearchPage(IWebDriver driver) : base(driver)
+        {
+            common = new Common(driver);
+        }
 
         public void Open()
         {
-            driver.Url = "https://search.brave.com/";
+            common.OpenPage("https://search.brave.com/");
         }
 
         public void EnterSearchPhrase(string phrase)
         {
-            driver.FindElement(By.Id("searchbox")).SendKeys(phrase);
+            string locator = "//*[@id='searchbox']";
+            common.SendKeysToElement(locator, phrase);
         }
 
         public void ClickButtonSubmit()
         {
-            driver.FindElement(By.Id("submit-button")).Click();
+            string locator = "//*[@id='submit-button']";
+            common.ClickElement(locator);
         }
 
         public string GetPageTitle()
         {
-            return driver.Title;
+            return common.GetPageTitle();
         }
     }
 }
