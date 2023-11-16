@@ -14,11 +14,10 @@ namespace Tests.Brave
         {
             string expectedTitle = $"{phrase} - Brave Search";
 
-            SearchPage searchPage = new SearchPage(driver);
-            searchPage.Open();
-            searchPage.EnterSearchPhrase(phrase);
-            searchPage.ClickButtonSubmit();
-            string actualTitle = searchPage.GetPageTitle();
+            SearchPage.Open();
+            SearchPage.EnterSearchPhrase(phrase);
+            SearchPage.ClickButtonSubmit();
+            string actualTitle = SearchPage.GetPageTitle();
 
             Assert.That(actualTitle, Is.EqualTo(expectedTitle));
         }

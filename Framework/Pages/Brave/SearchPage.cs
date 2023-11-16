@@ -2,28 +2,26 @@
 
 namespace Framework.Pages.Brave
 {
-    public class SearchPage : PageBase
+    public class SearchPage
     {
-        public SearchPage(IWebDriver driver) : base(driver) { }
-
-        public void Open()
+        public static void Open()
         {
-            driver.Url = "https://search.brave.com/";
+            Driver.GetDriver().Url = "https://search.brave.com/";
         }
 
-        public void EnterSearchPhrase(string phrase)
+        public static void EnterSearchPhrase(string phrase)
         {
-            driver.FindElement(By.Id("searchbox")).SendKeys(phrase);
+            Driver.GetDriver().FindElement(By.Id("searchbox")).SendKeys(phrase);
         }
 
-        public void ClickButtonSubmit()
+        public static void ClickButtonSubmit()
         {
-            driver.FindElement(By.Id("submit-button")).Click();
+            Driver.GetDriver().FindElement(By.Id("submit-button")).Click();
         }
 
-        public string GetPageTitle()
+        public static string GetPageTitle()
         {
-            return driver.Title;
+            return Driver.GetDriver().Title;
         }
     }
 }

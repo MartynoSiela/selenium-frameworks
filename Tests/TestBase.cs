@@ -1,25 +1,20 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
+﻿using Framework;
+using NUnit.Framework;
 
 namespace Tests
 {
-    [TestFixture]
-    [FixtureLifeCycle(LifeCycle.InstancePerTestCase)]
     public class TestBase
     {
-        protected IWebDriver driver;
-
         [SetUp]
         public void SetUp()
         {
-            driver = new ChromeDriver();
+            Driver.SetUpDriver();
         }
 
         [TearDown]
         public void TearDown()
         {
-            driver.Quit();
+            Driver.QuitDriver();
         }
     }
 }
